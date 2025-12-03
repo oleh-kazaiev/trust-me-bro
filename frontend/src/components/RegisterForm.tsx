@@ -39,7 +39,7 @@ const RegisterForm: React.FC = () => {
 
       if (response.ok) {
         setSuccess(true);
-        setTimeout(() => navigate('/admin'), 3000);
+        setTimeout(() => navigate('/dashboard'), 3000);
       } else {
         const errorData = await response.json();
         setError(errorData.detail || 'Registration failed');
@@ -61,7 +61,7 @@ const RegisterForm: React.FC = () => {
             Your account has been created but needs to be activated by an admin.
           </p>
           <p className="redirect-text">Redirecting to login in 3 seconds...</p>
-          <Link to="/admin" className="login-link-btn">
+          <Link to="/dashboard" className="login-link-btn">
             Go to Login
           </Link>
         </div>
@@ -123,7 +123,7 @@ const RegisterForm: React.FC = () => {
         </form>
 
         <div className="login-link">
-          Already have an account? <Link to="/admin">Login here</Link>
+          Already have an account? <Link to="/dashboard">Login here</Link>
         </div>
       </div>
     </div>

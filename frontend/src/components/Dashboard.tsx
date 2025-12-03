@@ -4,9 +4,9 @@ import LinksTab from './LinksTab';
 import UsersTab from './UsersTab';
 import type { Link, User, CurrentUser } from '../types';
 import { API_BASE_URL, FRONTEND_URL } from '../config';
-import './AdminDashboard.css';
+import './Dashboard.css';
 
-const AdminDashboard: React.FC = () => {
+const Dashboard: React.FC = () => {
   const [token, setToken] = useState<string | null>(() => localStorage.getItem('token'));
   const [url, setUrl] = useState('');
   const [links, setLinks] = useState<Link[]>([]);
@@ -56,7 +56,7 @@ const AdminDashboard: React.FC = () => {
     if (!token) return;
 
     try {
-      const response = await fetch(`${API_BASE_URL}/admin/stats`, {
+      const response = await fetch(`${API_BASE_URL}/links`, {
         headers: authHeaders(),
       });
       if (response.ok) {
@@ -66,7 +66,7 @@ const AdminDashboard: React.FC = () => {
         handleLogout();
       }
     } catch (err) {
-      console.error('Error fetching stats:', err);
+      console.error('Error fetching links:', err);
     }
   }, [token, authHeaders]);
 
@@ -107,7 +107,7 @@ const AdminDashboard: React.FC = () => {
     setError(null);
 
     try {
-      const response = await fetch(`${API_BASE_URL}/admin/create`, {
+      const response = await fetch(`${API_BASE_URL}/links/create`, {
         method: 'POST',
         headers: authHeaders(),
         body: JSON.stringify({ url }),
@@ -182,6 +182,22 @@ const AdminDashboard: React.FC = () => {
     }
   };
 
+  const deleteLink = async (shortCode: string) => {
+    if (!window.confirm('Are you sure you want to delete this link?')) return;
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/links/${shortCode}`, {
+        method: 'DELETE',
+        headers: authHeaders(),
+      });
+      if (response.ok) {
+        await fetchStats();
+      }
+    } catch (err) {
+      console.error('Error deleting link:', err);
+    }
+  };
+
   if (!token) {
     return <LoginForm onLoginSuccess={handleLoginSuccess} />;
   }
@@ -194,9 +210,14 @@ const AdminDashboard: React.FC = () => {
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleString(undefined, {
-      dateStyle: 'short',
-      timeStyle: 'short',
+    const date = new Date(dateString);
+    return date.toLocaleString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
     });
   };
 
@@ -254,6 +275,7 @@ const AdminDashboard: React.FC = () => {
             generatedLink={generatedLink}
             copiedCode={copiedCode}
             copyToClipboard={copyToClipboard}
+            deleteLink={deleteLink}
             formatDate={formatDate}
             truncateUrl={truncateUrl}
           />
@@ -274,4 +296,4 @@ const AdminDashboard: React.FC = () => {
   );
 };
 
-export default AdminDashboard;
+export default Dashboard;

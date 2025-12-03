@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#0f3460"/>
+    </linearGradient>
+    <linearGradient id="link" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff00"/>
+      <stop offset="100%" style="stop-color:#00cc00"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="url(#bg)" stroke="#00ff00" stroke-width="2"/>
+  <!-- Chain link icon -->
+  <g fill="none" stroke="url(#link)" stroke-width="6" stroke-linecap="round">
+    <!-- First link -->
+    <path d="M35 50 L25 50 A15 15 0 0 1 25 35 L40 35"/>
+    <path d="M40 35 A15 15 0 0 1 40 50"/>
+    <!-- Second link -->
+    <path d="M65 50 L75 50 A15 15 0 0 0 75 65 L60 65"/>
+    <path d="M60 65 A15 15 0 0 0 60 50"/>
+    <!-- Connecting line -->
+    <line x1="40" y1="50" x2="60" y2="50"/>
+  </g>
+</svg>

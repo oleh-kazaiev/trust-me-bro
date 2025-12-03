@@ -11,6 +11,7 @@ interface LinksTabProps {
   generatedLink: string;
   copiedCode: string | null;
   copyToClipboard: (shortCode: string) => void;
+  deleteLink: (shortCode: string) => void;
   formatDate: (dateString: string) => string;
   truncateUrl: (url: string, maxLength?: number) => string;
 }
@@ -25,6 +26,7 @@ const LinksTab: React.FC<LinksTabProps> = ({
   generatedLink,
   copiedCode,
   copyToClipboard,
+  deleteLink,
   formatDate,
   truncateUrl,
 }) => {
@@ -83,7 +85,13 @@ const LinksTab: React.FC<LinksTabProps> = ({
                   {links.map((link) => (
                     <tr key={link.short_code}>
                       <td>
-                        <code className="short-code">{link.short_code}</code>
+                        <code
+                          className={`short-code clickable ${copiedCode === link.short_code ? 'copied' : ''}`}
+                          onClick={() => copyToClipboard(link.short_code)}
+                          title="Click to copy"
+                        >
+                          {link.short_code}
+                        </code>
                       </td>
                       <td>
                         <a
@@ -93,19 +101,25 @@ const LinksTab: React.FC<LinksTabProps> = ({
                           title={link.original_url}
                           className="url-link"
                         >
-                          {truncateUrl(link.original_url)}
+                          {link.original_url}
                         </a>
                       </td>
                       <td className={`clicks ${link.clicks > 0 ? 'has-clicks' : ''}`}>
                         {link.clicks}
                       </td>
                       <td className="date">{formatDate(link.created_at)}</td>
-                      <td>
+                      <td className="actions-cell">
                         <button
                           onClick={() => copyToClipboard(link.short_code)}
                           className={`copy-btn ${copiedCode === link.short_code ? 'copied' : ''}`}
                         >
-                          {copiedCode === link.short_code ? '✓ Copied!' : 'Copy'}
+                          {copiedCode === link.short_code ? '✓' : 'Copy'}
+                        </button>
+                        <button
+                          onClick={() => deleteLink(link.short_code)}
+                          className="delete-btn"
+                        >
+                          Delete
                         </button>
                       </td>
                     </tr>
@@ -119,7 +133,13 @@ const LinksTab: React.FC<LinksTabProps> = ({
               {links.map((link) => (
                 <div key={link.short_code} className="link-card">
                   <div className="link-card-header">
-                    <code className="short-code">{link.short_code}</code>
+                    <code
+                      className={`short-code clickable ${copiedCode === link.short_code ? 'copied' : ''}`}
+                      onClick={() => copyToClipboard(link.short_code)}
+                      title="Click to copy"
+                    >
+                      {link.short_code}
+                    </code>
                     <span className={`clicks-badge ${link.clicks > 0 ? 'has-clicks' : ''}`}>
                       {link.clicks} clicks
                     </span>
@@ -134,12 +154,20 @@ const LinksTab: React.FC<LinksTabProps> = ({
                   </a>
                   <div className="link-card-footer">
                     <span className="date">{formatDate(link.created_at)}</span>
-                    <button
-                      onClick={() => copyToClipboard(link.short_code)}
-                      className={`copy-btn ${copiedCode === link.short_code ? 'copied' : ''}`}
-                    >
-                      {copiedCode === link.short_code ? '✓ Copied!' : 'Copy Link'}
-                    </button>
+                    <div className="card-actions">
+                      <button
+                        onClick={() => copyToClipboard(link.short_code)}
+                        className={`copy-btn ${copiedCode === link.short_code ? 'copied' : ''}`}
+                      >
+                        {copiedCode === link.short_code ? '✓' : 'Copy'}
+                      </button>
+                      <button
+                        onClick={() => deleteLink(link.short_code)}
+                        className="delete-btn"
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
