@@ -1,0 +1,504 @@
+.admin-container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.admin-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .admin-content {
+    padding: 40px 20px;
+  }
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin-title {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  margin: 0;
+  color: #00ff00;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.admin-badge {
+  background-color: #00ff00;
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.logout-btn {
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 1px solid #666;
+  border-radius: 6px;
+  color: #888;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  border-color: #888;
+  color: #e0e0e0;
+}
+
+.admin-subtitle {
+  color: #888;
+  margin-bottom: 30px;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+}
+
+@media (min-width: 768px) {
+  .admin-subtitle {
+    margin-bottom: 40px;
+  }
+}
+
+.card {
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 30px;
+    margin-bottom: 40px;
+  }
+}
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+}
+
+.create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 600px) {
+  .create-form {
+    flex-direction: row;
+  }
+
+  .url-input {
+    flex: 0 0 80%;
+  }
+
+  .submit-btn {
+    flex: 0 0 calc(20% - 10px);
+  }
+}
+
+.url-input {
+  padding: 12px 16px;
+  font-size: 1rem;
+  background-color: #2a2a2a;
+  border: 2px solid #333;
+  border-radius: 8px;
+  color: #e0e0e0;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.url-input:focus {
+  border-color: #00ff00;
+}
+
+.submit-btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #00ff00;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+  white-space: nowrap;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.error-message {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: rgba(255, 0, 0, 0.1);
+  border: 1px solid #ff4444;
+  border-radius: 8px;
+  color: #ff4444;
+}
+
+.success-message {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(0, 255, 0, 0.1);
+  border: 1px solid #00ff00;
+  border-radius: 8px;
+  word-break: break-all;
+}
+
+.success-message a {
+  color: #00ff00;
+}
+
+.empty-state {
+  color: #888;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* Desktop Table */
+.table-container {
+  overflow-x: auto;
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stats-table th {
+  padding: 15px 10px;
+  text-align: left;
+  color: #888;
+  border-bottom: 2px solid #333;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.stats-table th:nth-child(3),
+.stats-table th:nth-child(5) {
+  text-align: center;
+}
+
+.stats-table td {
+  padding: 15px 10px;
+  border-bottom: 1px solid #333;
+}
+
+.short-code {
+  background-color: #2a2a2a;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #00ff00;
+  font-size: 0.9rem;
+}
+
+.url-link {
+  color: #7ab8ff;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.url-link:hover {
+  text-decoration: underline;
+}
+
+.clicks {
+  text-align: center;
+  font-weight: bold;
+  color: #888;
+}
+
+.clicks.has-clicks {
+  color: #00ff00;
+}
+
+.date {
+  color: #888;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.copy-btn {
+  padding: 6px 12px;
+  background-color: #333;
+  color: #e0e0e0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover {
+  background-color: #444;
+}
+
+.copy-btn.copied {
+  background-color: #00ff00;
+  color: #000;
+}
+
+/* Mobile Cards */
+.mobile-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.link-card {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.link-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.clicks-badge {
+  font-size: 0.85rem;
+  color: #888;
+  padding: 4px 8px;
+  background-color: #1e1e1e;
+  border-radius: 4px;
+}
+
+.clicks-badge.has-clicks {
+  color: #00ff00;
+}
+
+.link-card .url-link {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.link-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Responsive visibility */
+.desktop-only {
+  display: none;
+}
+
+.mobile-only {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .desktop-only {
+    display: block;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 12px 24px;
+  background-color: #1e1e1e;
+  border: 2px solid #333;
+  border-radius: 8px;
+  color: #888;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.tab:hover {
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+.tab.active {
+  border-color: #00ff00;
+  color: #00ff00;
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+/* User Management Styles */
+.users-table td {
+  vertical-align: middle;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.status-badge.active {
+  background-color: rgba(0, 255, 0, 0.2);
+  color: #00ff00;
+}
+
+.status-badge.inactive {
+  background-color: rgba(255, 68, 68, 0.2);
+  color: #ff4444;
+}
+
+.role-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.role-badge.admin {
+  background-color: rgba(0, 255, 0, 0.2);
+  color: #00ff00;
+}
+
+.role-badge.user {
+  background-color: rgba(136, 136, 136, 0.2);
+  color: #888;
+}
+
+.user-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-btn.activate {
+  background-color: rgba(0, 255, 0, 0.2);
+  color: #00ff00;
+}
+
+.action-btn.activate:hover:not(:disabled) {
+  background-color: rgba(0, 255, 0, 0.3);
+}
+
+.action-btn.deactivate {
+  background-color: rgba(255, 165, 0, 0.2);
+  color: #ffa500;
+}
+
+.action-btn.deactivate:hover:not(:disabled) {
+  background-color: rgba(255, 165, 0, 0.3);
+}
+
+.action-btn.toggle-admin {
+  background-color: rgba(122, 184, 255, 0.2);
+  color: #7ab8ff;
+}
+
+.action-btn.toggle-admin:hover:not(:disabled) {
+  background-color: rgba(122, 184, 255, 0.3);
+}
+
+.action-btn.delete {
+  background-color: rgba(255, 68, 68, 0.2);
+  color: #ff4444;
+}
+
+.action-btn.delete:hover:not(:disabled) {
+  background-color: rgba(255, 68, 68, 0.3);
+}
+
+/* User Cards (Mobile) */
+.user-card {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.user-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.user-name {
+  font-weight: bold;
+  color: #e0e0e0;
+  word-break: break-all;
+}
+
+.user-badges {
+  display: flex;
+  gap: 6px;
+}
+
+.user-card-date {
+  color: #888;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.user-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
