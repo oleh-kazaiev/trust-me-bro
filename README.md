@@ -6,7 +6,6 @@ A humorous URL shortener with a "downloading miner" meme page. Built as a joke a
 
 - **Frontend**: https://trust-me-bro.link
 - **API**: https://api.trust-me-bro.link
-- **Admin Dashboard**: https://trust-me-bro.link/admin
 
 ## Features
 
